@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linel.com.ar - Sitio en Construcción</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #0d0d0d);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        /* Fondo con patrón sutil */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* Logo/Título principal */
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #0066cc, transparent);
+            animation: lineGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes lineGlow {
+            0%, 100% {
+                opacity: 0.5;
+                transform: translateX(-50%) scaleX(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) scaleX(1.2);
+            }
+        }
+
+        /* Subtítulo */
+        .subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 200;
+        }
+
+        /* Contenedor del mensaje */
+        .construction-container {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .construction-text {
+            font-size: 2rem;
+            color: #0066cc;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            animation: fadeSlide 4s ease-in-out infinite;
+        }
+
+        @keyframes fadeSlide {
+            0%, 100% {
+                opacity: 0.7;
+                transform: translateY(0px);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-5px);
+            }
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #999999;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+
+        /* Barra de progreso empresarial */
+        .progress-container {
+            width: 400px;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #0066cc, #0088ff, #0066cc);
+            background-size: 200% 100%;
+            animation: progressFlow 3s ease-in-out infinite;
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(0, 102, 204, 0.5);
+        }
+
+        @keyframes progressFlow {
+            0% {
+                width: 20%;
+                background-position: 0% 0%;
+            }
+            50% {
+                width: 80%;
+                background-position: 100% 0%;
+            }
+            100% {
+                width: 20%;
+                background-position: 200% 0%;
+            }
+        }
+
+        /* Información de contacto */
+        .contact-info {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-text {
+            color: #cccccc;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .email {
+            color: #0066cc;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .email:hover {
+            color: #0088ff;
+        }
+
+        /* Robot animado - solo cabeza */
+        .robot-container {
+            width: 60px;
+            height: 60px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .robot {
+            width: 100%;
+            height: 100%;
+            animation: robotFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes robotFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Cabeza del robot */
+        .robot-head {
+            width: 60px;
+            height: 50px;
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            border-radius: 10px;
+            margin: 0 auto;
+            position: relative;
+            border: 2px solid #0066cc;
+            box-shadow: 0 0 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .robot-eyes {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .robot-eye {
+            width: 10px;
+            height: 10px;
+            background-color: #00ff88;
+            border-radius: 50%;
+            animation: eyeBlink 4s infinite;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
+        @keyframes eyeBlink {
+            0%, 90%, 100% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+            95% {
+                opacity: 0.3;
+                transform: scaleY(0.1);
+            }
+        }
+
+        .robot-antenna {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background-color: #0066cc;
+        }
+
+        .robot-antenna::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: #00ff88;
+            border-radius: 50%;
+            animation: antennaPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes antennaPulse {
+            0%, 100% {
+                box-shadow: 0 0 8px #00ff88;
+            }
+            50% {
+                box-shadow: 0 0 20px #00ff88;
+            }
+        }
+
+        /* Elementos decorativos */
+        .decorative-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .element {
+            position: absolute;
+            background-color: rgba(0, 102, 204, 0.05);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .element:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .element:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 70%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 40%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.05;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.15;
+            }
+        }
+
+        /* Sección de colaboradores */
+        .collaborators {
+            margin-top: 3rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .collaborators-text {
+            color: #888888;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .collaborator-logo {
+            width: 60px;
+            height: auto;
+            max-height: 30px;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .collaborator-logo:hover {
+            opacity: 1;
+        }
+
+        /* Responsive para colaboradores */
+        @media (max-width: 768px) {
+            .collaborators {
+                margin-top: 2rem;
+            }
+
+            .collaborators-text {
+                font-size: 0.7rem;
+            }
+
+            .collaborator-logo {
+                width: 50px;
+                max-height: 25px;
+            }
+        }
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+                letter-spacing: 4px;
+            }
+
+            .construction-text {
+                font-size: 1.5rem;
+            }
+
+            .progress-container {
+                width: 300px;
+            }
+
+            .description {
+                font-size: 0.9rem;
+                padding: 0 1rem;
+            }
+
+            .element {
+                display: none;
+            }
+
+            .collaborators {
+                margin-top: 2rem;
+            }
+
+            .collaborators-text {
+                font-size: 0.7rem;
+            }
+
+            .collaborator-logo {
+                width: 50px;
+                max-height: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+                letter-spacing: 2px;
+            }
+
+            .construction-text {
+                font-size: 1.3rem;
+            }
+
+            .progress-container {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="decorative-elements">
+        <div class="element"></div>
+        <div class="element"></div>
+        <div class="element"></div>
+    </div>
+
+    <h1 class="main-title">linel.com.ar</h1>
+    <p class="subtitle">Diseño Web Profesional en WordPress - 
+DISEÑO Y DESARROLLO WEB</p>
+
+    <div class="construction-container">
+        <div class="construction-text">Sitio en Construcción</div>
+        <p class="description">
+            Estamos trabajando para ofrecerte la mejor experiencia digital. 
+            Nuestro nuevo sitio web estará disponible próximamente con innovadoras 
+            soluciones y servicios de alta calidad.
+        </p>
+    </div>
+
+    <!-- Robot animado - solo cabeza -->
+    <div class="robot-container">
+        <div class="robot">
+            <div class="robot-head">
+                <div class="robot-antenna"></div>
+                <div class="robot-eyes">
+                    <div class="robot-eye"></div>
+                    <div class="robot-eye"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <div class="contact-info">
+        <p class="contact-text">Para consultas:</p>
+        <a href="mailto:info@linel.com.ar" class="email">proyectos.linel@gmail.com</a>
+    </div>
+
+    <!-- Sección de colaboradores -->
+    <div class="collaborators">
+        <p class="collaborators-text">Colaboran:</p>
+        <img src="logo-tuaiti.png" alt="Logo colaborador" class="collaborator-logo">
+    </div>
+
+    <script>
+        // Efecto sutil de cambio de color para el título
+        const title = document.querySelector('.main-title');
+        let colorIndex = 0;
+        const professionalColors = ['#ffffff', '#f0f8ff', '#e6f3ff'];
+
+        setInterval(() => {
+            colorIndex = (colorIndex + 1) % professionalColors.length;
+            title.style.color = professionalColors[colorIndex];
+        }, 4000);
+
+        // Agregar más elementos decorativos dinámicamente
+        function createFloatingElements() {
+            const container = document.querySelector('.decorative-elements');
+            
+            for (let i = 0; i < 3; i++) {
+                const element = document.createElement('div');
+                element.className = 'element';
+                element.style.left = Math.random() * 80 + 10 + '%';
+                element.style.top = Math.random() * 80 + 10 + '%';
+                element.style.width = Math.random() * 30 + 20 + 'px';
+                element.style.height = element.style.width;
+                element.style.animationDelay = Math.random() * 6 + 's';
+                element.style.animationDuration = Math.random() * 4 + 4 + 's';
+                
+                container.appendChild(element);
+            }
+        }
+
+        createFloatingElements();
+    </script>
+</body>
+</html>
