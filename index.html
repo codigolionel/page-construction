@@ -39,6 +39,22 @@
             background-size: 60px 60px;
         }
 
+                /* Logo principal */
+        .main-logo {
+            width: 222px;
+            height: auto;
+            max-height: 180px;
+            object-fit: contain;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+            transition: opacity 0.3s ease;
+        }
+
+        .main-logo:hover {
+            opacity: 1;
+        }
+
         /* Logo/Título principal */
         .main-title {
             font-size: 3.5rem;
@@ -430,6 +446,9 @@
         <div class="element"></div>
         <div class="element"></div>
     </div>
+
+        <!-- Logo principal -->
+    <img src="logo_linel.jpg" alt="Logo Linel" class="main-logo">
 
     <h1 class="main-title">linel.com.ar</h1>
     <p class="subtitle">Diseño Web Profesional en WordPress - 
